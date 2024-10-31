@@ -1,0 +1,12 @@
+# Create a kafka topic
+docker exec -it kafka //usr//bin//kafka-topics --create --topic topic_test --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+# List created topics
+docker exec -it kafka //usr//bin//kafka-topics --list --bootstrap-server localhost:9092
+
+
+# Send messages to the topic
+docker exec -it kafka //usr//bin//kafka-console-producer --topic topic_test --bootstrap-server localhost:9092
+
+# Consume messages from the topic
+docker exec -it kafka //usr//bin//kafka-console-consumer --topic topic_new --bootstrap-server localhost:9092 --from-beginning

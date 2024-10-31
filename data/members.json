@@ -1,0 +1,33 @@
+[
+  {
+    "name": "user",
+    "password": "qwerty"
+  },
+  {
+    "name": "example",
+    "password": "qwerty"
+  },
+  {
+    "name": "VIP",
+    "password": "useriskey",
+    "roles": ["vip", "subscriber"]
+  },
+  {
+    "id": "S1sGYwUKs",
+    "name": "newuser",
+    "password": "pw1",
+    "roles": ["subscriber"]
+  },
+  {
+    "id": "r1i8FR8ts",
+    "name": "bobble",
+    "password": "dfsf",
+    "roles": [""]
+  },
+  {
+    "id": "r1KrFcsti",
+    "name": "jabberwokki",
+    "password": "flimflam",
+    "roles": [""]
+  }
+]
