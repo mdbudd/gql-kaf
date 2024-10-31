@@ -38,3 +38,7 @@ describe("GET /graphql", () => {
     expect(response.body.data?.weather.wind_unit).toBe("mp/h")
   })
 })
+
+afterAll((done) => {
+  done()
+})
