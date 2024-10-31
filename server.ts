@@ -13,8 +13,8 @@ import bodyParser from "body-parser"
 import fs from "fs"
 import http from "http"
 import https from "https"
-const privateKey = fs.readFileSync("certs/cert.key", "utf8")
-const certificate = fs.readFileSync("certs/cert.pem", "utf8")
+const privateKey = process.env.NODE_ENV === "dev" ? fs.readFileSync("certs/cert.key", "utf8") : ""
+const certificate = process.env.NODE_ENV === "dev" ? fs.readFileSync("certs/cert.pem", "utf8") : ""
 const credentials = { key: privateKey, cert: certificate }
 import cors from "cors"
 import dotenv from "dotenv"
