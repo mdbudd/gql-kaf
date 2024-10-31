@@ -39,6 +39,4 @@ describe("GET /graphql", () => {
   })
 })
 
-afterAll((done) => {
-  done()
-})
+afterAll(() => setTimeout(() => process.exit(), 1000))
