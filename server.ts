@@ -11,6 +11,7 @@ import * as middlewares from "./resources/middlewares"
 import api from "./api"
 import bodyParser from "body-parser"
 import fs from "fs"
+import http from "http"
 import https from "https"
 const privateKey = fs.readFileSync("certs/cert.key", "utf8")
 const certificate = fs.readFileSync("certs/cert.pem", "utf8")
@@ -26,8 +27,9 @@ import { verifyAccessToken } from "./resources/utils"
 dotenv.config()
 
 const app: Express = express()
+const httpServer = http.createServer(app)
 const httpsServer = https.createServer(credentials, app)
-const envServer = process.env.NODE_ENV === "dev" ? httpsServer : httpsServer
+const envServer = process.env.NODE_ENV === "dev" ? httpServer : httpsServer
 
 const schema = makeExecutableSchema({
   typeDefs,
