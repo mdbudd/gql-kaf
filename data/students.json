@@ -1,0 +1,18 @@
+[
+  {
+    "id": "HJM_FIbZkg",
+    "email": "jim@gmail.com",
+    "firstName": "jim",
+    "lastName": "jones",
+    "password": "password1!",
+    "new": "yes"
+  },
+  {
+    "id": "BkfTp8b-ke",
+    "email": "john@gmail.com",
+    "firstName": "john",
+    "lastName": "jovi",
+    "password": "password1!",
+    "new": "yes"
+  }
+]

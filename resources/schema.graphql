@@ -1,6 +1,8 @@
 #graphql
+scalar JSON
 type Subscription {
   numberIncremented: Int
+  newMessage: JSON
 }
 type Query {
   currentNumber: Int
@@ -8,6 +10,7 @@ type Query {
   places(name: String!): [Place]
   weather(latitude: Float!, longitude: Float!): Weather
 
+  getStudents: [Student]
   
   studentById(id: ID!): Student
   books: [Book]

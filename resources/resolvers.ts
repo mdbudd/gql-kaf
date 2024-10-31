@@ -1,7 +1,8 @@
 import { PubSub } from "graphql-subscriptions"
 import { WeatherAPI, PlacesAPI } from "./rest"
 import DataLoader from "dataloader"
-
+import GraphQLJSON from "graphql-type-json"
+import { persistConsumer } from "./kafka/consumer"
 import { authors /*, books*/ } from "../data/data"
 import db from "./db"
 
@@ -13,7 +14,7 @@ interface ContextValue {
     db: any
   }
 }
-const pubsub = new PubSub()
+export const pubsub = new PubSub()
 
 let currentNumber = 0
 // In the background, increment a number every second and notify subscribers when it changes.
@@ -24,11 +25,17 @@ function incrementNumber() {
 }
 // Start incrementing
 incrementNumber()
-
+persistConsumer("topic_new")
 export const resolvers = {
+  JSON: GraphQLJSON,
   Subscription: {
     numberIncremented: {
       subscribe: () => pubsub.asyncIterator(["NUMBER_INCREMENTED"]),
+    },
+    newMessage: {
+      subscribe: () => {
+        return pubsub.asyncIterator(["MESSAGE_CREATED"])
+      },
     },
   },
   Query: {
@@ -61,7 +68,8 @@ export const resolvers = {
       )
       return weather
     },
-   
+
+    getStudents: () => db.students.list(),
   },
 
   Book: {

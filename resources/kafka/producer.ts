@@ -1,8 +1,7 @@
-import { Message } from "kafkajs"
+import { Message, Partitioners } from "kafkajs"
 import { kafka } from "./kafka-client"
-
 // Create a producer instance
-const producer = kafka.producer()
+const producer = kafka.producer({ createPartitioner: Partitioners.LegacyPartitioner })
 
 export const runProducer = async (topic: string, messages: Message[]) => {
   try {
@@ -17,6 +16,7 @@ export const runProducer = async (topic: string, messages: Message[]) => {
     })
 
     console.log("Messages sent - 📤")
+   
 
     // Disconnect the producer
     await producer.disconnect()
